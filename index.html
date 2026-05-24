@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>苏州海睿数字科技有限公司 - 官方网站</title>
+  <style>
+    :root {
+      --primary: #6366f1;
+      --primary-dark: #4f46e5;
+      --accent: #06b6d4;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --bg: #f8fafc;
+      --text: #1e293b;
+      --text-light: #64748b;
+      --card: #ffffff;
+      --border: #e2e8f0;
+      --radius: 12px;
+      --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -2px rgba(0,0,0,0.04);
+      --max-width: 1200px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+      transition: box-shadow 0.3s;
+    }
+    .navbar.scrolled { box-shadow: var(--shadow-lg); }
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+    .nav-logo {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-light);
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.2s;
+      position: relative;
+    }
+    .nav-links a:hover { color: var(--primary); }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0; height: 2px;
+      background: var(--primary);
+      transition: width 0.3s;
+    }
+    .nav-links a:hover::after { width: 100%; }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 50%, #c7d2fe 100%);
+      position: relative;
+      overflow: hidden;
+      padding: 120px 24px 80px;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%; right: -20%;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(99,102,241,0.08) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -30%; left: -10%;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(6,182,212,0.06) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero-content {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-badge {
+      display: inline-block;
+      padding: 6px 16px;
+      background: rgba(99,102,241,0.1);
+      color: var(--primary);
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+    }
+    .hero h1 .highlight {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-subtitle {
+      font-size: 1.25rem;
+      color: var(--text-light);
+      max-width: 620px;
+      margin-bottom: 40px;
+      line-height: 1.8;
+    }
+    .hero-cta {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 32px;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(99,102,241,0.3);
+    }
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(99,102,241,0.4);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+    .btn-outline:hover {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .section {
+      padding: 100px 24px;
+    }
+    .section-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+    .section-label {
+      display: inline-block;
+      padding: 4px 14px;
+      background: rgba(99,102,241,0.08);
+      color: var(--primary);
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 700;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+    .section-desc {
+      font-size: 1.1rem;
+      color: var(--text-light);
+      max-width: 700px;
+      margin-bottom: 48px;
+      line-height: 1.8;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .stat-card {
+      background: var(--card);
+      padding: 32px 24px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .stat-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+    .stat-label {
+      color: var(--text-light);
+      font-size: 0.95rem;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+    .card {
+      background: var(--card);
+      padding: 40px 32px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      transition: all 0.3s;
+      border: 1px solid transparent;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--primary);
+    }
+    .card-icon {
+      width: 56px; height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 16px;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+    .card-icon.blue { background: rgba(99,102,241,0.1); color: var(--primary); }
+    .card-icon.green { background: rgba(16,185,129,0.1); color: var(--success); }
+    .card-icon.amber { background: rgba(245,158,11,0.1); color: var(--warning); }
+    .card-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .card-desc {
+      color: var(--text-light);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .timeline {
+      position: relative;
+      padding: 20px 0;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0; bottom: 0;
+      width: 2px;
+      background: var(--border);
+      transform: translateX(-50%);
+    }
+    .timeline-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 40px;
+      position: relative;
+    }
+    .timeline-item:nth-child(odd) { flex-direction: row; }
+    .timeline-item:nth-child(even) { flex-direction: row-reverse; }
+    .timeline-content {
+      width: 45%;
+      background: var(--card);
+      padding: 24px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .timeline-dot {
+      width: 24px; height: 24px;
+      background: var(--primary);
+      border-radius: 50%;
+      border: 4px solid #e0e7ff;
+      margin: 0 20px;
+      z-index: 1;
+      flex-shrink: 0;
+    }
+    .timeline-year {
+      font-size: 0.85rem;
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .timeline-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .timeline-desc {
+      color: var(--text-light);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    .moat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .moat-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 24px;
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border-left: 4px solid;
+    }
+    .moat-item.deep { border-left-color: var(--success); }
+    .moat-item.mid { border-left-color: var(--warning); }
+    .moat-item.shallow { border-left-color: var(--danger); }
+    .moat-level {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 10px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .moat-level.deep { background: rgba(16,185,129,0.1); color: var(--success); }
+    .moat-level.mid { background: rgba(245,158,11,0.1); color: var(--warning); }
+    .moat-level.shallow { background: rgba(239,68,68,0.1); color: var(--danger); }
+
+    .pest-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    .pest-card {
+      padding: 32px 24px;
+      border-radius: var(--radius);
+      text-align: center;
+    }
+    .pest-card.p { background: rgba(99,102,241,0.06); }
+    .pest-card.e { background: rgba(16,185,129,0.06); }
+    .pest-card.s { background: rgba(245,158,11,0.06); }
+    .pest-card.t { background: rgba(139,92,246,0.06); }
+    .pest-icon {
+      width: 48px; height: 48px;
+      margin: 0 auto 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+    .pest-icon.p { background: rgba(99,102,241,0.15); color: var(--primary); }
+    .pest-icon.e { background: rgba(16,185,129,0.15); color: var(--success); }
+    .pest-icon.s { background: rgba(245,158,11,0.15); color: var(--warning); }
+    .pest-icon.t { background: rgba(139,92,246,0.15); color: #8b5cf6; }
+    .pest-title { font-weight: 700; font-size: 1.1rem; margin-bottom: 8px; }
+    .pest-desc { color: var(--text-light); font-size: 0.9rem; line-height: 1.6; }
+
+    .canvas-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .canvas-cell {
+      background: var(--card);
+      padding: 20px 16px;
+      min-height: 100px;
+    }
+    .canvas-cell-title {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+    }
+    .canvas-cell-content {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      line-height: 1.5;
+    }
+
+    .contact-section {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: #fff;
+    }
+    .contact-section .section-label { background: rgba(255,255,255,0.15); color: #fff; }
+    .contact-section .section-desc { color: rgba(255,255,255,0.8); }
+    .contact-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 24px;
+      margin-top: 32px;
+    }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px;
+      background: rgba(255,255,255,0.1);
+      border-radius: var(--radius);
+      backdrop-filter: blur(10px);
+    }
+    .contact-item-icon {
+      width: 44px; height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.15);
+      border-radius: 50%;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 32px 24px;
+      color: var(--text-light);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .canvas-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 2rem; }
+      .timeline::before { left: 20px; }
+      .timeline-item, .timeline-item:nth-child(even) { flex-direction: row; }
+      .timeline-content { width: calc(100% - 60px); }
+      .timeline-dot { position: absolute; left: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="#home" class="nav-logo">海睿数科</a>
+    <ul class="nav-links">
+      <li><a href="#about">关于我们</a></li>
+      <li><a href="#services">核心业务</a></li>
+      <li><a href="#advantages">竞争优势</a></li>
+      <li><a href="#contact">联系我们</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <span class="hero-badge">&#127942; 江苏省首批数字化服务商</span>
+    <h1>以 AI 智能体驱动<br><span class="highlight">企业数字化转型升级</span></h1>
+    <p class="hero-subtitle">苏州海睿数字科技有限公司，专注人工智能技术基础研究与行业应用开发，拥有火山引擎、腾讯云、飞书等核心代理资质，为企业提供一站式 AI 数字化解决方案。</p>
+    <div class="hero-cta">
+      <a href="#about" class="btn btn-primary">了解更多</a>
+      <a href="#contact" class="btn btn-outline">联系我们</a>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section class="section" id="about">
+  <div class="section-inner">
+    <span class="section-label">关于我们</span>
+    <h2 class="section-title">关于海睿数科</h2>
+    <p class="section-desc">苏州海睿数字科技有限公司成立于2022年，位于中国（江苏）自由贸易试验区苏州工业园区。公司坚持"技术研发+产品落地"双轮驱动模式，专注人工智能技术基础研究与行业应用开发，深度投入智能体开发、多模态处理与大模型优化等前沿技术领域。</p>
+
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-icon blue">&#129302;</div>
+        <div class="card-title">AI 智能体技术领先</div>
+        <div class="card-desc">自研 HiAgent 智能体平台，融合多模态处理与大模型优化技术，为企业构建高效、可进化的数字员工体系，助力 AI 规模化落地。</div>
+      </div>
+      <div class="card">
+        <div class="card-icon green">&#127942;</div>
+        <div class="card-title">省级数字化服务商认证</div>
+        <div class="card-desc">2025年成功入选江苏省首批数字化服务商资源池（全省仅25家），技术实力与服务能力获得省工信厅权威认可。</div>
+      </div>
+      <div class="card">
+        <div class="card-icon amber">&#127760;</div>
+        <div class="card-title">头部云厂商核心代理</div>
+        <div class="card-desc">拥有火山引擎（字节跳动）、腾讯云、飞书、腾讯会议等核心代理资质，依托头部云厂商资源优势提供全栈技术服务。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Stats -->
+<section class="section" style="padding-top: 0;">
+  <div class="section-inner">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-number">2022</div>
+        <div class="stat-label">成立年份</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">1000万</div>
+        <div class="stat-label">注册资本（元）</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">Top 25</div>
+        <div class="stat-label">江苏省首批数字化服务商</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">20%+</div>
+        <div class="stat-label">企业效率提升</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Core Business -->
+<section class="section" id="services" style="background: #fff;">
+  <div class="section-inner">
+    <span class="section-label">核心业务</span>
+    <h2 class="section-title">四大核心业务板块</h2>
+    <p class="section-desc">以 AI 智能体为核心引擎，结合云计算、数字化办公与人才培训，为企业提供全方位数字化转型解决方案。</p>
+
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-icon blue">&#129504;</div>
+        <div class="card-title">HiAgent 智能体平台</div>
+        <div class="card-desc">基于火山引擎 HiAgent 打造企业级 AI 智能体解决方案，支持私有化部署与销售场景定制化，帮助企业搭建专属 AI 门户平台，实现智能客服、智能销售、智能办公等场景落地。</div>
+      </div>
+      <div class="card">
+        <div class="card-icon green">&#128218;</div>
+        <div class="card-title">企业级知识中台</div>
+        <div class="card-desc">构建企业专属知识库与 AI 应用中心，整合多源数据，提供智能检索、知识图谱、智能问答等能力，为企业决策与知识管理提供底层技术支撑。</div>
+      </div>
+      <div class="card">
+        <div class="card-icon amber">&#9729;&#65039;</div>
+        <div class="card-title">云计算与云服务</div>
+        <div class="card-desc">作为火山引擎与腾讯云核心代理商，提供云基础设施、云原生架构、大数据平台等全栈云服务，助力企业上云用云，降低IT成本，提升运营效率。</div>
+      </div>
+      <div class="card">
+        <div class="card-icon blue">&#127891;</div>
+        <div class="card-title">数字化人才培训与认证</div>
+        <div class="card-desc">依托飞书、腾讯会议等协作工具代理资质，提供数字化办公培训、AI 技能认证、企业内训等一站式人才培养服务，助力企业构建数字化人才梯队。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Business Canvas -->
+<section class="section">
+  <div class="section-inner">
+    <span class="section-label">商业画布</span>
+    <h2 class="section-title">商业模式全景图</h2>
+    <p class="section-desc">用商业画布框架直观展示苏州海睿数字科技有限公司商业模式的核心要素</p>
+
+    <div class="canvas-grid">
+      <div class="canvas-cell">
+        <div class="canvas-cell-title">客户细分</div>
+        <div class="canvas-cell-content">制造业大中型企业、地方政府与产业园区、金融机构、教育培训机构、急需数字化转型的传统企业</div>
+      </div>
+      <div class="canvas-cell">
+        <div class="canvas-cell-title">价值主张</div>
+        <div class="canvas-cell-content">以 AI 智能体驱动企业数字化转型，提供"技术研发+产品落地"双轮驱动的一站式解决方案，帮助企业提升至少20%生产效率</div>
+      </div>
+      <div class="canvas-cell">
+        <div class="canvas-cell-title">渠道通路</div>
+        <div class="canvas-cell-content">江苏省数字化服务商资源池平台、火山引擎与腾讯云渠道生态、行业展会与CIO大会、直销与合作伙伴网络</div>
+      </div>
+      <div class="canvas-cell">
+        <div class="canvas-cell-title">客户关系</div>
+        <div class="canvas-cell-content">项目制深度合作、长期技术运维与支持、定制化解决方案交付、客户成功经理一对一服务</div>
+      </div>
+      <div class="canvas-cell">
+        <div class="canvas-cell-title">收入来源</div>
+        <div class="canvas-cell-content">AI 智能体项目实施与许可费、云服务代理佣金与部署费、数字化培训与认证服务费、知识中台SaaS订阅费</div>
+      </div>
+      <div class="canvas-cell">
+        <div class="canvas-cell-title">重要合作</div>
+        <div class="canvas-cell-content">火山引擎（字节跳动）、腾讯云、飞书、腾讯会议、江苏省工信厅、产业园区运营商</div>
+      </div>
+      <div class="canvas-cell">
+        <div class="canvas-cell-title">核心资源</div>
+        <div class="canvas-cell-content">HiAgent 智能体自研技术、头部云厂商核心代理资质、省级数字化服务商认证、AI与大模型技术团队</div>
+      </div>
+      <div class="canvas-cell">
+        <div class="canvas-cell-title">关键业务</div>
+        <div class="canvas-cell-content">AI 智能体研发与定制部署、企业级知识中台搭建、云基础设施与云原生服务、数字化人才培训认证</div>
+      </div>
+      <div class="canvas-cell">
+        <div class="canvas-cell-title">成本结构</div>
+        <div class="canvas-cell-content">AI 研发人力成本、云资源与技术平台成本、市场推广与渠道建设、人才培训体系维护</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Competitive Advantages -->
+<section class="section" id="advantages" style="background: #fff;">
+  <div class="section-inner">
+    <span class="section-label">竞争优势</span>
+    <h2 class="section-title">为什么选择海睿数科</h2>
+    <p class="section-desc">凭借前沿 AI 技术积累、权威认证资质与头部云厂商生态优势，海睿数科构建了独特的竞争壁垒。</p>
+
+    <div class="moat-grid">
+      <div class="moat-item deep">
+        <div>
+          <span class="moat-level deep">深</span>
+          <div class="card-title">省级权威认证壁垒</div>
+          <div class="card-desc">入选江苏省首批数字化服务商资源池（全省仅25家），获省工信厅权威授牌，成为政府推荐数字化服务供应商，具备显著的品牌信任优势。</div>
+        </div>
+      </div>
+      <div class="moat-item deep">
+        <div>
+          <span class="moat-level deep">深</span>
+          <div class="card-title">头部云厂商生态壁垒</div>
+          <div class="card-desc">同时拥有火山引擎、腾讯云、飞书、腾讯会议等多家头部云厂商核心代理资质，构建了独特的多云服务生态，具备差异化竞争能力。</div>
+        </div>
+      </div>
+      <div class="moat-item mid">
+        <div>
+          <span class="moat-level mid">中</span>
+          <div class="card-title">AI 智能体技术壁垒</div>
+          <div class="card-desc">深度投入 HiAgent 智能体开发，融合多模态处理与大模型优化等前沿技术，在企业销售场景 AI 落地方面积累了可复用的实践范本。</div>
+        </div>
+      </div>
+      <div class="moat-item mid">
+        <div>
+          <span class="moat-level mid">中</span>
+          <div class="card-title">双轮驱动模式壁垒</div>
+          <div class="card-desc">"技术研发+产品落地"双轮驱动模式确保技术创新与实际应用紧密结合，经实践验证可为企业提升生产效率不低于20%，形成客户口碑壁垒。</div>
+        </div>
+      </div>
+      <div class="moat-item shallow">
+        <div>
+          <span class="moat-level shallow">浅</span>
+          <div class="card-title">区位与政策壁垒</div>
+          <div class="card-desc">位于苏州工业园区自贸区，坐拥长三角制造业集群优势，叠加江苏省智改数转政策红利，具备良好的市场拓展环境。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Timeline -->
+<section class="section">
+  <div class="section-inner">
+    <span class="section-label">发展历程</span>
+    <h2 class="section-title">海睿数科发展历程</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <div class="timeline-year">2022年7月</div>
+          <div class="timeline-title">公司成立</div>
+          <div class="timeline-desc">苏州海睿数字科技有限公司在苏州工业园区自贸区正式注册成立，注册资本1000万元，开启 AI 数字化服务征程。</div>
+        </div>
+        <div class="timeline-dot"></div>
+        <div style="width:45%;"></div>
+      </div>
+      <div class="timeline-item">
+        <div style="width:45%;"></div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-year">2023-2024年</div>
+          <div class="timeline-title">技术积累与资质拓展</div>
+          <div class="timeline-desc">深度投入 AI 智能体研发，取得火山引擎、腾讯云、飞书、腾讯会议等核心代理资质，构建多云服务生态体系。</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <div class="timeline-year">2025年11月</div>
+          <div class="timeline-title">入选省级数字化服务商</div>
+          <div class="timeline-desc">成功入选江苏省首批数字化服务商资源池（全省25家），在第14届江苏 CIO 大会现场由省工信厅领导授牌，技术实力获权威认可。</div>
+        </div>
+        <div class="timeline-dot"></div>
+        <div style="width:45%;"></div>
+      </div>
+      <div class="timeline-item">
+        <div style="width:45%;"></div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-year">2025年12月</div>
+          <div class="timeline-title">AI 落地标杆案例</div>
+          <div class="timeline-desc">与耿创网络合作交付 AI 智能体销售场景方案，为 AI 技术赋能企业销售场景提供可复用的实践范本，持续优化 HiAgent 私有化部署能力。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PEST Analysis -->
+<section class="section" style="background: #fff;">
+  <div class="section-inner">
+    <span class="section-label">外部环境</span>
+    <h2 class="section-title">PEST 宏观环境分析</h2>
+    <p class="section-desc">从政策、经济、社会、技术四个维度分析苏州海睿数字科技有限公司所处的外部环境</p>
+
+    <div class="pest-grid">
+      <div class="pest-card p">
+        <div class="pest-icon p">P</div>
+        <div class="pest-title">政策环境</div>
+        <div class="pest-desc">江苏省"智改数转网联"三年行动计划大力推动企业数字化转型，首批数字化服务商资源池政策红利释放。国家层面持续鼓励 AI 与实体经济深度融合。</div>
+      </div>
+      <div class="pest-card e">
+        <div class="pest-icon e">E</div>
+        <div class="pest-title">经济环境</div>
+        <div class="pest-desc">长三角地区制造业数字化市场需求旺盛，企业上云用云与 AI 应用投入持续增长。苏州工业园区作为国家级开发区，产业基础雄厚，数字化转型预算充裕。</div>
+      </div>
+      <div class="pest-card s">
+        <div class="pest-icon s">S</div>
+        <div class="pest-title">社会环境</div>
+        <div class="pest-desc">企业对 AI 技术的认知度与接受度显著提升，数字化人才缺口持续扩大驱动培训认证需求。后疫情时代加速了企业远程协作与智能办公的普及。</div>
+      </div>
+      <div class="pest-card t">
+        <div class="pest-icon t">T</div>
+        <div class="pest-title">技术环境</div>
+        <div class="pest-desc">大模型技术快速迭代，AI 智能体成为企业 AI 落地的新范式。火山引擎 HiAgent 等平台降低了智能体开发门槛，推动 AI 从概念验证走向规模化应用。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="section contact-section" id="contact">
+  <div class="section-inner">
+    <span class="section-label">联系我们</span>
+    <h2 class="section-title" style="color: #fff;">联系海睿数科</h2>
+    <p class="section-desc">对我们的 AI 数字化解决方案感兴趣？欢迎通过以下方式联系我们，获取专属定制方案。</p>
+
+    <div class="contact-info">
+      <div class="contact-item">
+        <div class="contact-item-icon">&#128205;</div>
+        <div>
+          <div style="font-weight:600;margin-bottom:4px;">公司地址</div>
+          <div style="font-size:0.9rem;opacity:0.85;">中国（江苏）自由贸易试验区苏州工业园区苏虹西路9号1栋211-3室</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon">&#127974;</div>
+        <div>
+          <div style="font-weight:600;margin-bottom:4px;">官方网站</div>
+          <div style="font-size:0.9rem;opacity:0.85;">www.hiruiai.com</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon">&#128188;</div>
+        <div>
+          <div style="font-weight:600;margin-bottom:4px;">法定代表人</div>
+          <div style="font-size:0.9rem;opacity:0.85;">张健丰</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon">&#128197;</div>
+        <div>
+          <div style="font-weight:600;margin-bottom:4px;">成立时间</div>
+          <div style="font-size:0.9rem;opacity:0.85;">2022年7月8日</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <p>&copy; 2026 苏州海睿数字科技有限公司. All Rights Reserved. | 本网站由 AI 自动生成</p>
+</footer>
+
+<script>
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.card, .stat-card, .moat-item, .pest-card, .canvas-cell, .contact-item, .timeline-content').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'all 0.6s ease-out';
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
